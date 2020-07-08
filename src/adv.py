@@ -50,8 +50,25 @@ room['treasure'].s_to = room['narrow']
 #
 # If the user enters "q", quit the game.
 
-# Write input command parser here
 # THE INFO ABOVE IS IMPORTANT TO THE GAME 
 # Link rooms sets up your map => Visualize how those rooms are linked and draw a diagram on white board; DELETE THESE COMMENTS WHEN DONE
 
+# Personal Stretch => Print start page and add Parser for user character name
+# MY PLAN
+# import textwrap
+# input command parser
+    # recieve n, s, e, w and q for quit
+# gamplay loop
+    # while command isn't q
+    # print current room name
+    # print current room description use textwrap.wrap(room.description)
+    # print message to continue
+    # input command parser
+    # move to next room or throw error
+
 # IF NO PLAYER INPUT CUZ OUT OF TIME HARD CODE MAIN CHARACTER AS GROGNAK
+
+# Understand
+    # players need to input a direction limited to cardinal directions
+    #   After each move print the name and description of the room
+    # use n, s, e, w for commands or print error
