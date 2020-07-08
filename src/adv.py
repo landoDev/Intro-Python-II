@@ -1,4 +1,5 @@
 from room import Room
+from player import Player
 
 # Declare all the rooms
 
@@ -57,11 +58,14 @@ room['treasure'].s_to = room['narrow']
 # import textwrap
 import textwrap
 # input command parser
+print("\nWelcome to Grognak's Adventure!\n")
+print(room['outside'])
 print('\nGrognak\n-------')
 user_input = input('[n] North [e] East [s] South [w] West [q] Quit\ncommand: ')
     
 # gamplay loop
-    # while command isn't q
+while not user_input == 'q':
+    pass
     # print current room name
     # print current room description use textwrap.wrap(room.description)
     # print message to continue

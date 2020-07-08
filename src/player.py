@@ -1,4 +1,7 @@
 # Write a class to hold player information, e.g. what room they are in
 # currently.
 class Player:
-    pass
+    def __init__(self, name):
+        self.name = name
+        self.current_room = None
+    
