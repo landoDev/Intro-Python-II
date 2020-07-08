@@ -49,3 +49,7 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+# Write input command parser here
+# THE INFO ABOVE IS IMPORTANT TO THE GAME 
+# Link rooms sets up your map => Visualize how those rooms are linked and draw a diagram on white board; DELETE THESE COMMENTS WHEN DONE
