@@ -27,7 +27,7 @@ class Player:
             self.current_room = new_room
         # check to see if the new room exists and turn player back if not
         if self.current_room == None:
-            print('CANNOT GO THIS WAY')
+            print('\nCANNOT GO THIS WAY\n')
             self.current_room = self.last_room
         
     

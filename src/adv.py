@@ -1,6 +1,7 @@
 from room import Room
 from player import Player
 import textwrap
+import re
 
 # Declare all the rooms
 
@@ -43,17 +44,21 @@ room['treasure'].s_to = room['narrow']
 player = Player("Grognak")
 player.current_room = room['outside']
 
-print("\nWelcome to Grognak's Adventure!\n")
+print("\nWelcome to Grognak's Adventure!")
 
 # Write a loop that:
 while True:
     # * Prints the current room name
+    print("\n")
     print(player.current_room)
     print(f'\n{player.name}\n-------')
     user_input = input('[n] North [e] East [s] South [w] West [q] Quit\ncommand: \n')
+    re_input = re.search("[nesw]", user_input)
     # If the user enters "q", quit the game.
     if user_input == 'q':
         break
+    elif not re_input:
+        print('\nError: Invalid Input!\n')
     else:
         # If the user enters a cardinal direction, attempt to move to the room there.
         # Print an error message if the movement isn't allowed.
