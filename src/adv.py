@@ -47,14 +47,22 @@ print("\nWelcome to Grognak's Adventure!\n")
 
 # Write a loop that:
 while True:
+    # * Prints the current room name
     print(player.current_room)
+    # print(player.current_room.name)
+    # print(textwrap.wrap(player.current_room.description))
     print(f'\n{player.name}\n-------')
     user_input = input('[n] North [e] East [s] South [w] West [q] Quit\ncommand: ')
     if user_input == 'q':
-        break     
-# * Prints the current room name
+        break
+    else:
+        player.move(user_input)
+        
+        
 
-# * Prints the current description (the textwrap module might be useful here).
+
+
+
 # * Waits for user input and decides what to do.
 
 
