@@ -49,45 +49,15 @@ print("\nWelcome to Grognak's Adventure!\n")
 while True:
     # * Prints the current room name
     print(player.current_room)
-    # print(player.current_room.name)
-    # print(textwrap.wrap(player.current_room.description))
     print(f'\n{player.name}\n-------')
-    user_input = input('[n] North [e] East [s] South [w] West [q] Quit\ncommand: ')
+    user_input = input('[n] North [e] East [s] South [w] West [q] Quit\ncommand: \n')
+    # If the user enters "q", quit the game.
     if user_input == 'q':
         break
     else:
+        # If the user enters a cardinal direction, attempt to move to the room there.
+        # Print an error message if the movement isn't allowed.
         player.move(user_input)
-        
-        
 
 
 
-
-# * Waits for user input and decides what to do.
-
-
-# If the user enters a cardinal direction, attempt to move to the room there.
-# Print an error message if the movement isn't allowed.
-#
-# If the user enters "q", quit the game.
-
-# THE INFO ABOVE IS IMPORTANT TO THE GAME 
-
-# Personal Stretch => Print start page and add Parser for user character name
-# MY PLAN
-
- 
-# gamplay loop
-
-    # print current room name
-    # print current room description use textwrap.wrap(room.description)
-    # print message to continue
-    # input command parser
-    # move to next room or throw error
-
-# IF NO PLAYER INPUT CUZ OUT OF TIME HARD CODE MAIN CHARACTER AS GROGNAK
-
-# Understand
-    # players need to input a direction limited to cardinal directions
-    #   After each move print the name and description of the room
-    # use n, s, e, w for commands or print error
