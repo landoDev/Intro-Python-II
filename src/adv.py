@@ -53,3 +53,5 @@ room['treasure'].s_to = room['narrow']
 # Write input command parser here
 # THE INFO ABOVE IS IMPORTANT TO THE GAME 
 # Link rooms sets up your map => Visualize how those rooms are linked and draw a diagram on white board; DELETE THESE COMMENTS WHEN DONE
+
+# IF NO PLAYER INPUT CUZ OUT OF TIME HARD CODE MAIN CHARACTER AS GROGNAK
