@@ -1,5 +1,6 @@
 from room import Room
 from player import Player
+import textwrap
 
 # Declare all the rooms
 
@@ -39,7 +40,12 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
-
+player = Player("Grognak")
+player.current_room = room['outside']
+print("\nWelcome to Grognak's Adventure!\n")
+print(player.current_room)
+print(f'\n{player.name}\n-------')
+user_input = input('[n] North [e] East [s] South [w] West [q] Quit\ncommand: ')
 # Write a loop that:
 #
 # * Prints the current room name
@@ -55,17 +61,13 @@ room['treasure'].s_to = room['narrow']
 
 # Personal Stretch => Print start page and add Parser for user character name
 # MY PLAN
-# import textwrap
-import textwrap
+
 # input command parser
-print("\nWelcome to Grognak's Adventure!\n")
-print(room['outside'])
-print('\nGrognak\n-------')
+
 user_input = input('[n] North [e] East [s] South [w] West [q] Quit\ncommand: ')
-    
+ 
 # gamplay loop
-while not user_input == 'q':
-    pass
+
     # print current room name
     # print current room description use textwrap.wrap(room.description)
     # print message to continue
