@@ -51,13 +51,15 @@ room['treasure'].s_to = room['narrow']
 # If the user enters "q", quit the game.
 
 # THE INFO ABOVE IS IMPORTANT TO THE GAME 
-# Link rooms sets up your map => Visualize how those rooms are linked and draw a diagram on white board; DELETE THESE COMMENTS WHEN DONE
 
 # Personal Stretch => Print start page and add Parser for user character name
 # MY PLAN
 # import textwrap
+import textwrap
 # input command parser
-    # recieve n, s, e, w and q for quit
+print('\nGrognak\n-------')
+user_input = input('[n] North [e] East [s] South [w] West [q] Quit\ncommand: ')
+    
 # gamplay loop
     # while command isn't q
     # print current room name
