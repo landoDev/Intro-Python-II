@@ -5,3 +5,6 @@ class Player:
         self.name = name
         self.current_room = None
     
+    def move(self, direction):
+        self.direction = direction
+    

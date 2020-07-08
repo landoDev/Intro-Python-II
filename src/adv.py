@@ -42,16 +42,22 @@ room['treasure'].s_to = room['narrow']
 # Make a new player object that is currently in the 'outside' room.
 player = Player("Grognak")
 player.current_room = room['outside']
+
 print("\nWelcome to Grognak's Adventure!\n")
-print(player.current_room)
-print(f'\n{player.name}\n-------')
-user_input = input('[n] North [e] East [s] South [w] West [q] Quit\ncommand: ')
+
 # Write a loop that:
-#
+while True:
+    print(player.current_room)
+    print(f'\n{player.name}\n-------')
+    user_input = input('[n] North [e] East [s] South [w] West [q] Quit\ncommand: ')
+    if user_input == 'q':
+        break     
 # * Prints the current room name
+
 # * Prints the current description (the textwrap module might be useful here).
 # * Waits for user input and decides what to do.
-#
+
+
 # If the user enters a cardinal direction, attempt to move to the room there.
 # Print an error message if the movement isn't allowed.
 #
@@ -62,9 +68,6 @@ user_input = input('[n] North [e] East [s] South [w] West [q] Quit\ncommand: ')
 # Personal Stretch => Print start page and add Parser for user character name
 # MY PLAN
 
-# input command parser
-
-user_input = input('[n] North [e] East [s] South [w] West [q] Quit\ncommand: ')
  
 # gamplay loop
 
