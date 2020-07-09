@@ -14,6 +14,8 @@ class Room:
 
     def addItem(self, item):
         self.items.append(item.name)
+    def removeItem(self):
+        self.items.pop()
 
     def __str__(self):
         return f"{self.name}\n{self.description}"

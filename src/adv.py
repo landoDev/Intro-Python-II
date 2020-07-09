@@ -25,12 +25,10 @@ chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
 }
 
-items = {
-    'outside':  Item("Torch",
-                     "A weak fire from a sconce")    
-}
+# declare items
 
 torch = Item("Torch", "A weak fire from a sconce")
+battleaxe = Item("Battleaxe", "A mighty weapon. Fit for a barbarian")
 
 # Link rooms together
 
@@ -60,16 +58,14 @@ while True:
     print("\n")
     print(player.current_room)
     print(f'\n{player.name}\n-------')
-    user_input = input('[n] Go North [e] Go East [s] Go South [w] Go West\n[s] Search [q] Quit\ncommand: \n')
+    user_input = input('[n] Go North [e] Go East [s] Go South [w] Go West\n[f] Search [q] Quit\ncommand: \n')
     # add search command for items
     re_input = re.search("[nesw]", user_input)
-    re_actions = re.search("[astdb]", user_input)
+    re_actions = re.search("[aftdb]", user_input)
     # If the user enters "q", quit the game.
     if user_input == 'q':
         break
-    elif not re_input:
-        print('\nError: Invalid Input!\n')
-    elif re_actions:
+    elif user_input == 'f':
         if player.current_room.items:
             loot = player.current_room.items
             while True:
@@ -78,9 +74,16 @@ while True:
                 if action_input == 'c':
                     break
                 else:
-                    player.takeItem(loot[0])
+                    gained = loot[0]
+                    player.takeItem(gained)
+                    player.current_room.removeItem()
+                    print(f'You acquired {gained}')
+                    if not loot:
+                        break
         else:
             print("\nThere is nothing here...")
+    elif not re_input:
+        print('\nError: Invalid Input!\n')
     else:
         # If the user enters a cardinal direction, attempt to move to the room there.
         # Print an error message if the movement isn't allowed.
