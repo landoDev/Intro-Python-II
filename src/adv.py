@@ -43,6 +43,12 @@ room['treasure'].s_to = room['narrow']
 
 # Add items to rooms
 room['outside'].addItem(torch)
+
+# Player Commands
+take = "take item"
+drop = "drop item"
+continue_command = "continue"
+inventory = "inventory"
 #
 # Main
 #
@@ -58,10 +64,10 @@ while True:
     print("\n")
     print(player.current_room)
     print(f'\n{player.name}\n-------')
-    user_input = input('[n] Go North [e] Go East [s] Go South [w] Go West\n[f] Search [q] Quit\ncommand: \n')
+    user_input = input('[n] Go North [e] Go East [s] Go South [w] Go West\n[f] Search [i] Inventory [q] Quit\ncommand: \n')
     # add search command for items
     re_input = re.search("[nesw]", user_input)
-    re_actions = re.search("[aftdb]", user_input)
+    re_actions = re.search("[aftdbi]", user_input)
     # If the user enters "q", quit the game.
     if user_input == 'q':
         break
@@ -70,18 +76,37 @@ while True:
             loot = player.current_room.items
             while True:
                 print('\nYou find: ', loot)
-                action_input = input('[t] Take Item [c] Continue\n')
-                if action_input == 'c':
+                action_input = input('Take [Item] [Continue]\n')
+                check_action = action_input.split(" ")
+                re_shortcut = re.search("[tcd]", action_input.lower())
+                re_take = re.search(take, action_input.lower())
+                re_drop = re.search(drop, action_input.lower())
+                re_continue = re.search(continue_command, action_input.lower())
+                # if check_action > 1:    
+                if action_input == 'c' or re_continue:
                     break
                 else:
                     gained = loot[0]
                     player.takeItem(gained)
                     player.current_room.removeItem()
                     print(f'You acquired {gained}')
-                    if not loot:
+                    action_input = input('Drop [Item] [Continue]\n')
+                    if action_input == 'c' or re_continue:
                         break
+                    else:
+                        dropped = player.items.pop()
+                        player.current_room.addItem(player.items)  
+                        print(f"You dropped {dropped}")
+                # else:
+
+
         else:
             print("\nThere is nothing here...")
+    elif user_input.lower() == 'i' or inventory:
+        if player.items:
+            print(player.items)
+        else:
+            print("You have nothing...")
     elif not re_input:
         print('\nError: Invalid Input!\n')
     else:
