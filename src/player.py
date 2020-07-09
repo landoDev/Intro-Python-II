@@ -5,6 +5,7 @@ class Player:
         self.name = name
         self.current_room = None
         self.last_room = None
+        self.items = []
     
     def __str__(self):
         return f"{self.current_room.name}.  {self.current_room.description}"
@@ -29,5 +30,9 @@ class Player:
         if self.current_room == None:
             print('\nCANNOT GO THIS WAY\n')
             self.current_room = self.last_room
+
+    def takeItem(self, item):
+        self.items.append(item)
+
         
     

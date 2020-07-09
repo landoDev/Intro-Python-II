@@ -12,6 +12,8 @@ class Room:
         self.e_to = None
         self.w_to = None
 
+    def addItem(self, item):
+        self.items.append(item.name)
 
     def __str__(self):
         return f"{self.name}\n{self.description}"
@@ -22,3 +24,4 @@ class Chest:
         self.rewards = rewards
     def open(self):
         print(f"{self.rewards}")
+

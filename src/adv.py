@@ -25,6 +25,12 @@ chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
 }
 
+items = {
+    'outside':  Item("Torch",
+                     "A weak fire from a sconce")    
+}
+
+torch = Item("Torch", "A weak fire from a sconce")
 
 # Link rooms together
 
@@ -37,6 +43,8 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
+# Add items to rooms
+room['outside'].addItem(torch)
 #
 # Main
 #
@@ -52,7 +60,7 @@ while True:
     print("\n")
     print(player.current_room)
     print(f'\n{player.name}\n-------')
-    user_input = input('[n] North [e] East [s] South [w] West\n[s] Search [q] Quit\ncommand: \n')
+    user_input = input('[n] Go North [e] Go East [s] Go South [w] Go West\n[s] Search [q] Quit\ncommand: \n')
     # add search command for items
     re_input = re.search("[nesw]", user_input)
     re_actions = re.search("[astdb]", user_input)
@@ -63,8 +71,14 @@ while True:
         print('\nError: Invalid Input!\n')
     elif re_actions:
         if player.current_room.items:
-            print(player.current_room.items)
-            action_input = input('[t] T ')
+            loot = player.current_room.items
+            while True:
+                print('\nYou find: ', loot)
+                action_input = input('[t] Take Item [c] Continue\n')
+                if action_input == 'c':
+                    break
+                else:
+                    player.takeItem(loot[0])
         else:
             print("\nThere is nothing here...")
     else:
