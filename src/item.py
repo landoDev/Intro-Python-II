@@ -1,5 +1,6 @@
 '''
 Game Items
+Items are aggregate: Hint
 '''
 
 class Item:

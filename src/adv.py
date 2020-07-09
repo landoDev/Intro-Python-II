@@ -1,4 +1,5 @@
 from room import Room
+from item import Item
 from player import Player
 import textwrap
 import re
@@ -43,7 +44,6 @@ room['treasure'].s_to = room['narrow']
 # Make a new player object that is currently in the 'outside' room.
 player = Player("Grognak")
 player.current_room = room['outside']
-
 print("\nWelcome to Grognak's Adventure!")
 
 # Write a loop that:
@@ -52,16 +52,25 @@ while True:
     print("\n")
     print(player.current_room)
     print(f'\n{player.name}\n-------')
-    user_input = input('[n] North [e] East [s] South [w] West [q] Quit\ncommand: \n')
+    user_input = input('[n] North [e] East [s] South [w] West\n[s] Search [q] Quit\ncommand: \n')
+    # add search command for items
     re_input = re.search("[nesw]", user_input)
+    re_actions = re.search("[astdb]", user_input)
     # If the user enters "q", quit the game.
     if user_input == 'q':
         break
     elif not re_input:
         print('\nError: Invalid Input!\n')
+    elif re_actions:
+        if player.current_room.items:
+            print(player.current_room.items)
+            action_input = input('[t] T ')
+        else:
+            print("\nThere is nothing here...")
     else:
         # If the user enters a cardinal direction, attempt to move to the room there.
         # Print an error message if the movement isn't allowed.
+        
         player.move(user_input)
 
 
