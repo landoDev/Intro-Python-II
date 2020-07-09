@@ -73,8 +73,8 @@ while True:
         break
     elif user_input == 'f':
         if player.current_room.items:
-            loot = player.current_room.items
             while True:
+                loot = player.current_room.items
                 print('\nYou find: ', loot)
                 action_input = input('Take [Item] [Continue]\n')
                 check_action = action_input.split(" ")
@@ -82,31 +82,36 @@ while True:
                 re_take = re.search(take, action_input.lower())
                 re_drop = re.search(drop, action_input.lower())
                 re_continue = re.search(continue_command, action_input.lower())
-                # if check_action > 1:    
-                if action_input == 'c' or re_continue:
+                if len(check_action) > 1:    
+                    get_item = check_action[1].capitalize()
+                    if get_item in loot:
+                        gained = get_item
+                        player.takeItem(gained)
+                        player.current_room.removeItem()
+                        print(f'\nYou acquired {gained}')
+                        action_input = input('Drop [Item] [c] Continue\n')
+                        check_drop = action_input.split()
+                        if action_input == 'c':
+                            break
+                        elif len(check_drop) > 1:
+                            dropped_item = check_drop[1].capitalize()
+                            if dropped_item in player.items:
+                                player.dropItem(dropped_item)
+                                player.current_room.addItem(Item(dropped_item, "This item was dropped"))
+                                print(f"\nYou dropped {dropped_item}")
+                            else:
+                                print("\nSeems you don't have that item...")
+                    else: 
+                        print("\nCould not find that item in here...")
+                elif action_input == 'c' or re_continue:
                     break
-                else:
-                    gained = loot[0]
-                    player.takeItem(gained)
-                    player.current_room.removeItem()
-                    print(f'You acquired {gained}')
-                    action_input = input('Drop [Item] [Continue]\n')
-                    if action_input == 'c' or re_continue:
-                        break
-                    else:
-                        dropped = player.items.pop()
-                        player.current_room.addItem(player.items)  
-                        print(f"You dropped {dropped}")
-                # else:
-
-
         else:
             print("\nThere is nothing here...")
-    elif user_input.lower() == 'i' or inventory:
+    elif user_input == 'i':
         if player.items:
-            print(player.items)
+            print(f"\nInventory:\n{player.items}")
         else:
-            print("You have nothing...")
+            print("\nYou have nothing...")
     elif not re_input:
         print('\nError: Invalid Input!\n')
     else:

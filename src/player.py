@@ -33,6 +33,8 @@ class Player:
 
     def takeItem(self, item):
         self.items.append(item)
+    def dropItem(self, item):
+        self.items.remove(item)
 
         
     
